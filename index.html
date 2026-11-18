@@ -564,7 +564,7 @@ addEventListener('scroll',()=>{
 function renderDate(){
   if(!WEDDING_DATE) return;
   const d=new Date(WEDDING_DATE), loc=T[lang].locale;
-  $('heroDate').textContent=d.toLocaleDateString(loc,{day:'2-digit',month:'2-digit',year:'numeric'}).replace(/\//g,' · ');
+  $('heroDate').textContent=d.toLocaleDateString(loc,{day:'2-digit',month:'2-digit',year:'numeric'}).replace(/\//g,' · ')+' · '+d.toLocaleTimeString(loc,{hour:'2-digit',minute:'2-digit'});
 }
 
 /* ---- Mapas ---- */
