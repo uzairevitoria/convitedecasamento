@@ -69,7 +69,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .lang button[aria-pressed="true"]{background:var(--on-b);color:var(--bordo)}
 
 /* ===== Navegação fixa em baixo ===== */
-.tabs{position:fixed;left:0;right:0;bottom:0;z-index:40;background:rgba(251,248,243,.96);backdrop-filter:blur(8px);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);padding-bottom:env(safe-area-inset-bottom,0px);padding-left:max(8px,env(safe-area-inset-left,0px));padding-right:max(8px,env(safe-area-inset-right,0px))}
+.tabs{position:fixed;left:0;right:0;bottom:0;z-index:40;background:rgba(251,248,243,.96);backdrop-filter:blur(8px);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(3,1fr);padding-bottom:env(safe-area-inset-bottom,0px);padding-left:max(8px,env(safe-area-inset-left,0px));padding-right:max(8px,env(safe-area-inset-right,0px))}
 .tabs a{height:var(--navH);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-decoration:none;font-family:var(--f-sans);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
 .tabs a svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.3}
 .tabs a.on{color:var(--bordo)}
@@ -358,37 +358,6 @@ form{display:grid;gap:18px;margin-top:10px}
     </div>
   </section>
 
-  <!-- Ofertas -->
-  <section class="band dark" id="ofertas">
-    <div class="wrap">
-      <p class="eyebrow" data-t="giftsEyebrow">Ofertas aos noivos</p>
-      <h2 data-t="giftsTitle">Presente aos noivos</h2>
-      <p class="center" data-t="giftsBody">Para celebrar este novo capítulo da nossa vida, a vossa contribuição será muito bem-vinda. Agradecemos desde já o carinho e a generosidade neste momento tão especial.</p>
-      <div id="giftStep1">
-        <p class="step-k" data-t="pickAmt">Escolha o valor</p>
-        <div class="amounts" id="amounts" role="group" aria-label="€"></div>
-        <label class="step-k" for="otherAmt" data-t="otherAmt">Outro valor (€)</label>
-        <input id="otherAmt" type="number" min="1" step="1" inputmode="numeric" data-tp="otherPh" placeholder="Ex.: 80">
-        <p class="err light" id="giftErr" aria-live="polite"></p>
-        <button class="btn solid wide" type="button" id="giftNext" data-t="giftNext">Continuar para a transferência</button>
-      </div>
-      <div class="pay" id="giftStep2" hidden>
-        <p class="step-k" data-t="payTitle">Dados para transferência</p>
-        <div class="pay-amt"><span data-t="payAmt">Valor a transferir</span><b id="payAmt">50 €</b></div>
-        <div class="pay-row"><span class="k" data-t="holders">Titulares</span><span class="v">Uzair Umer &amp; Vitória Primo</span></div>
-        <div class="pay-row"><span class="k">IBAN</span><code class="v" id="ibanTxt">PT50 3560 0000 1900 1534 6986 51</code><button class="btn solid" id="copyIban" type="button" data-t="copyIban">Copiar IBAN</button></div>
-        <div class="pay-row"><span class="k" data-t="refK">Descrição</span><span class="v" id="refTxt" data-t="refVal">Presente de casamento Uzair &amp; Vitória</span><button class="btn" id="copyRef" type="button" data-t="copy">Copiar</button></div>
-        <ol class="pay-steps">
-          <li data-t="ps1">Copie o IBAN.</li>
-          <li data-t="ps2">Abra a aplicação do seu banco e faça a transferência deste valor para o IBAN acima.</li>
-          <li data-t="ps3">Se quiser, avise os noivos pelo WhatsApp.</li>
-        </ol>
-        <a class="btn solid wide" id="giftWa" target="_blank" rel="noopener" data-t="giftWa">Já fiz a transferência · avisar os noivos</a>
-        <button class="btn wide" type="button" id="giftBack" data-t="giftBack">Alterar valor</button>
-      </div>
-    </div>
-  </section>
-
   <!-- RSVP -->
   <section class="band" id="rsvp">
     <div class="wrap">
@@ -453,7 +422,6 @@ form{display:grid;gap:18px;margin-top:10px}
 <nav class="tabs" aria-label="Secções">
   <a href="#inicio" class="on"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9h-6v-6H9v6H3z"/></svg><span data-t="navHome">Início</span></a>
   <a href="#local"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span data-t="navDay">Local</span></a>
-  <a href="#ofertas"><svg viewBox="0 0 24 24"><rect x="3" y="9" width="18" height="12"/><path d="M3 13h18M12 9v12M12 9C9 9 7 7.5 8 5.5S12 6 12 9c0-3 3-5 4-3.5S15 9 12 9"/></svg><span data-t="navGifts">Ofertas</span></a>
   <a href="#rsvp"><svg viewBox="0 0 24 24"><path d="M3 6h18v12H3z"/><path d="M3 6l9 7 9-7"/></svg><span>RSVP</span></a>
 </nav>
 
@@ -461,7 +429,7 @@ form{display:grid;gap:18px;margin-top:10px}
 /* ===== Dados a preencher ===== */
 const WEDDING_DATE = "2027-01-16T15:00:00";
 const RSVP_DEADLINE = {pt:"10 de dezembro de 2026", en:"10 December 2026"};
-const WHATSAPP_NUMBER = "";         // ex.: "351912345678"
+const WHATSAPP_NUMBER = "351932203770";         // ex.: "351912345678"
 const AMOUNTS = [25, 50, 75, 100, 150, 200]; // valores de exemplo
 const ADDRESS = "Quinta do Cutato, Rua das Nogueiras 7, Foros do Almada, 2130-523 Santo Estevão";
 
@@ -578,30 +546,6 @@ async function copyText(text,btn,key){
   catch(e){btn.textContent=T[lang].selectCopy;}
   setTimeout(()=>btn.textContent=T[lang][key],2000);
 }
-$('copyIban').addEventListener('click',e=>{
-  copyText($('ibanTxt').textContent.replace(/\s/g,''),e.currentTarget,'copyIban');
-  const r=document.createRange();r.selectNodeContents($('ibanTxt'));const s=getSelection();s.removeAllRanges();s.addRange(r);
-});
-
-/* ---- Ofertas ---- */
-const amountsEl=$('amounts'),other=$('otherAmt');let giftV=null;
-function clearAmt(){amountsEl.querySelectorAll('.amt').forEach(x=>x.setAttribute('aria-pressed','false'))}
-AMOUNTS.forEach(v=>{const b=document.createElement('button');b.type='button';b.className='amt';b.dataset.v=v;b.textContent=v+' €';b.setAttribute('aria-pressed','false');
-  b.onclick=()=>{clearAmt();b.setAttribute('aria-pressed','true');other.value='';giftV=v;$('giftErr').textContent=''};amountsEl.appendChild(b)});
-other.addEventListener('input',()=>{clearAmt();const v=parseFloat(other.value);giftV=v>0?Math.round(v*100)/100:null;if(giftV)$('giftErr').textContent=''});
-function renderPay(){
-  if(!giftV)return;
-  $('payAmt').textContent=T[lang].fmt(giftV);
-  $('giftWa').href=`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(T[lang].waGift(giftV))}`;
-}
-$('giftNext').onclick=()=>{
-  if(!giftV){$('giftErr').textContent=T[lang].eAmt;return}
-  renderPay();$('giftStep1').hidden=true;$('giftStep2').hidden=false;
-  $('ofertas').scrollIntoView({behavior:'smooth',block:'start'});
-};
-$('giftBack').onclick=()=>{$('giftStep2').hidden=true;$('giftStep1').hidden=false};
-$('copyRef').addEventListener('click',e=>copyText($('refTxt').textContent,e.currentTarget,'copy'));
-
 /* ---- RSVP ---- */
 const names=[],extras=[];
 function renderChips(){
